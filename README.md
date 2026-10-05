@@ -56,7 +56,11 @@ Preparing an input is like writing a tiny old BASIC program:
 
 - You can also edit a line with `EDIT <node>`, which simply puts the content of a node in the keyboard input textbox.
 
-When you're done preparing your input, you send it with `RUN`. You can also save with `SAVE <NODE>` in which case the input will spawn in the knowledge base for persistence, and the address at which it is stored will be returned.
+When you're done preparing your input, you send it with `RUN`.
+
+You can also save with `SAVE <node>` in which case the input, from `<node>` to its descendants, will spawn in the knowledge base for persistence, and the address at which it is stored will be returned.
+
+You can clear the currently edited input using `CLEAR`. 
 
 
 
