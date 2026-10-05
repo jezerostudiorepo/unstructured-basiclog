@@ -7,7 +7,7 @@
 
 _Rock Paper Scissor_
 
-> "A masterpiece in usefullness."
+> "A masterpiece in usefulness."
 
 _100% AI Gamer_
 
@@ -27,7 +27,36 @@ _Me_
 
 **As a REPL automaton,** Unstructured Basiclog offers state-of-the-art ergonomics that feels just like operating an authentic modern home computer: Amstrad CPC 464, ZX Spectrum, Commodore 64, Thomson MO5...
 
-**And that's** about it. But as a production/deduction rule system, with timers and triggers, a behavior tree, and a logic knowledge base, all of that operated through a pure line-numbered assembly language, offline.
+**And that's** about it. But as a production/deduction rule system, with timers and triggers, a behavior tree, and a logic knowledge base, all operated through a pure line-numbered assembly language REPL, offline.
+
+
+
+## Usage
+
+The command-line interface is similar to that of a home computer running BASIC. First you prepare your input, then you send your input.
+
+Preparing an input is like writing a tiny old BASIC program:
+
+```
+10 PRINT 20
+20 "Hello world"
+```
+
+- A line numbered is called a "node". A node is a numbered line.
+
+- To create or overwrite a node, you simply type it.
+
+  - Either `<node> "value"`  is a constant value, like line 20,
+
+  - Or `<node> <type> <content>` makes it a typed node + arguments, like line 10.
+
+- In the case of a constant, only 1 literal is given, enclosed in double quotes.
+
+- In the cased of a typed node, arguments are given as a list of nodes 
+
+- You can also edit a line with `EDIT <node>`, which simply puts the content of a node in the keyboard input textbox.
+
+When you're done preparing your input, you send it with `RUN`. You can also save with `SAVE <NODE>` in which case the input will spawn in the knowledge base for persistence, and the address at which it is stored will be returned.
 
 
 
