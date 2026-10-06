@@ -31,6 +31,23 @@ _Me_
 
 
 
+## Screen zones
+
+- Top: custom toolbar,
+- Left: source code snapshot tree,
+- Right: node editor,
+- Bottom: user input/output terminal.
+
+Usage:
+- click on nodes in the tree to choose display in editor,
+- click on nodes in editor to toggle visibility of children nodes.
+
+The global screen zone concept is built upon the core idea that every line number, in the editor, is clickable: each one toggles the visibility of its children.
+
+The same can be done from the softcode. (???)
+
+
+
 ## Usage
 
 The command-line interface is similar to that of a home computer running BASIC. First you prepare your input, then you send your input.
@@ -52,7 +69,7 @@ Preparing an input is like writing a tiny old BASIC program:
 
 - In the case of a constant, only 1 literal is given, enclosed in double quotes.
 
-- In the cased of a typed node, arguments are given as a list of nodes 
+- In the case of a typed node, arguments are given as a list of nodes 
 
 - You can also edit a line with `EDIT <node>`, which simply puts the content of a node in the keyboard input textbox.
 
@@ -221,6 +238,9 @@ It generally means literally, "these ones can and should be used instead of me".
 Any `<node>` refers to a line number and all its descendants. Their names are for convenience, all types of lines are equally nodes.
 
 ```xml
+commands
+<action>    RUN <start> <arguments> ...
+
 states
 <metanode>  KNOWLEDGE BASE
 <metanode>  POINTER GRAPH
@@ -282,6 +302,12 @@ deduction production
 Below, a minimal explanation of the builtin vocabulary above.
 
 ```xml
+<action>    RUN <start> <argyments> ...
+```
+
+Launch the execution of a `<start>` node with provuded arguments.
+
+```xml
 <metanode>  KNOWLEDGE BASE
 ```
 
@@ -328,9 +354,6 @@ A meta-node meaning, "this is from User Input", the current user commands and pr
 One of the five meta-nodes that make Unstructured Basiclog an automaton, along with any combination of those four.
 
 - It always succeeds.
-
-
-
 
 ```xml
 <metanode>  NOTHING
@@ -416,8 +439,6 @@ A Behavior Tree `IS INSTANCE` logic node. It means that `<node>` was spawned as 
 A no-operation `REM` meta-node. It means that `<node>` has no effect, and is part of the Documentation.
 
 - It always succeeds.
-
-
 
 ```xml
 <action>    SEQUENCE <outcome> ...
