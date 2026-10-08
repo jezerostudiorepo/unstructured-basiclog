@@ -1,7 +1,7 @@
 
 
 
-# Unstructured Basiclog
+# Unstructured BASIClog DESIGN
 
 > "A smiling finger to academia papers."
 
@@ -15,7 +15,114 @@ _100% AI Gamer_
 
 _The Boomer_
 
-> "One of the five meta-nodes"
+---
+
+**Unstructured BASIClog** is the only revolutionary REPL automaton that can save the world, one day. Make your share, do your duty, join us now!
+
+**As a REPL automaton,** Unstructured BASIClog offers state-of-the-art ergonomics that feels just like operating an authentic modern home computer: Amstrad CPC 464, ZX Spectrum, Commodore 64, Thomson MO5...
+
+**And that's** about it. But as a production/deduction rule system, with timers and triggers, a behavior tree, and a logic knowledge base, all operated through a pure line-numbered assembly language REPL, offline.
+
+
+
+## Syntax
+
+```xml
+
+<logic>         FOR <proposition>
+<logic>         ASSERT <proposition>
+<logic>         RETRACT <pattern>
+<logic>         PRODUCTION <situation> <action>
+<logic>         DEDUCTION <premise> <deduction>
+
+<behavior>      WAIT <situation>
+<behavior>      SEQUENCE <behavior> ...
+<behavior>      FALLBACK <behavior> ...
+<behavior>      PARALLEL <behavior> ...
+<behavior>      WHILE <behavior>
+<behavior>      UNTIL <behavior>
+<behavior>      EVERY <time> <behavior>
+<behavior>      AFTER <time> <behavior>
+
+<event>         EVENT LOG <situation>
+<event>         PREVIOUS NEXT <event> <event>
+<event>         BEFORE AFTER <event> <event>
+<event>         WHEN EVENT OCCURRED <time> <event> <occurrence>
+<event>         TIME BETWEEN <time> <occurrence> <occurrence>
+
+
+```
+
+
+
+## Roadmap
+
+- `[ ]` Rework the interaction model, with the concepts of workspaces and events.
+- `[ ]` Add random name generator.
+- `[ ]` Implement generic buttons in the toolbar.
+- `[ ]` Implement generic input API.
+- `[ ]` Detach Workspace from Unstructured BASIClog.
+- `[ ]` Make it a system where the source code and the interface is one and same thing.
+- `[ ]` When you look at a page of code, you're actually looking at an interactable UI you can use to launch services or shut them down, make queries, etc.
+- `[ ]` Add crypto functionality to blobs. Important because it allows authorization math.
+
+
+
+## Agents
+
+There's only one agent in Unstructured BASIClog: Unstructured BASIClog itself. We only speak of agents to conceive, design and create its communication mechanisms.
+
+Because we thing it should behave consistently with its environment in a seamless input/output flow.
+
+
+
+## Workspaces
+
+Workspaces are an equivalent of logical variables but for parts of the source code snapshot of agents, that is shared across agents.
+
+In other words, it's a selection of lines that an agent can choose to share or not. The selected lines are maintained identical in those that share them.
+
+The selection can be expressed using set operators, line number ranges, and queries in a same context.
+
+Basically, it's a window an agent opens for communication.
+
+Things tending to stay the same, when a new agent joins the workspace, the worspace currently shared lines overwrite its own.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Unstructured BASIClog RECYCLE BIN
+
+> "A smiling finger to academia papers."
+
+_Rock Paper Scissor_
+
+> "A masterpiece in usefulness."
+
+_100% AI Gamer_
+
+> "I only use metanode!"
+
+_The Boomer_
+
+> "One of the five metanodes"
 
 _Me_
 
@@ -23,11 +130,40 @@ _Me_
 
 _Me_
 
-**Unstructured Basiclog** is the only revolutionary REPL automaton that can save the world, one day. Make your share, do your duty, join us now!
 
-**As a REPL automaton,** Unstructured Basiclog offers state-of-the-art ergonomics that feels just like operating an authentic modern home computer: Amstrad CPC 464, ZX Spectrum, Commodore 64, Thomson MO5...
+
+**Unstructured BASIClog** is the only revolutionary REPL automaton that can save the world, one day. Make your share, do your duty, join us now!
+
+**As a REPL automaton,** Unstructured BASIClog offers state-of-the-art ergonomics that feels just like operating an authentic modern home computer: Amstrad CPC 464, ZX Spectrum, Commodore 64, Thomson MO5...
 
 **And that's** about it. But as a production/deduction rule system, with timers and triggers, a behavior tree, and a logic knowledge base, all operated through a pure line-numbered assembly language REPL, offline.
+
+
+
+## Roadmap
+
+- `[ ]` Rework the interaction model, with the concepts of workspaces and events.
+- `[ ]` Add random name generator.
+- `[ ]` Implement generic buttons in the toolbar.
+- `[ ]` Implement generic input API.
+- `[ ]` Detach Workspace from Unstructured BASIClog.
+- `[ ]` Make it a system where the source code and the interface is one and same thing.
+- `[ ]` When you look at a page of code, you're actually looking at an interactable UI you can use to launch services or shut them down, make queries, etc.
+- `[ ]` Add crypto functionality to blobs. Important because it allows authorization math.
+
+
+
+## Workspaces
+
+Workspaces are an equivalent of logical variables but for parts of the source code snapshot of agents, that is shared across agents.
+
+In other words, it's a selection of lines that an agent can choose to share or not. The selected lines are maintained identical in those that share them.
+
+The selection can be expressed using set operators, line number ranges, and queries in a same context.
+
+Basically, it's a window an agent opens for communication.
+
+Things tending to stay the same, when a new agent joins the workspace, the worspace currently shared lines overwrite its own.
 
 
 
@@ -35,16 +171,17 @@ _Me_
 
 - Top: custom toolbar,
 - Left: source code snapshot tree,
-- Right: node editor,
-- Bottom: user input/output terminal.
+- Right top: node editor,
+- Right bottom: user input/output terminal.
 
 Usage:
-- click on nodes in the tree to choose display in editor,
-- click on nodes in editor to toggle visibility of children nodes.
+- click on nodes in the tree to toggle their display in editor as head of their own block,
+- double-click on line numbers in editor to toggle visibility of children nodes in the same block,
+- double-click on a predicate to execute it (and select it entirely).
 
-The global screen zone concept is built upon the core idea that every line number, in the editor, is clickable: each one toggles the visibility of its children.
+The global screen zone concept is built upon the core idea that every token on every line, in the editor, is clickable: each one toggles the visibility of its children.
 
-The same can be done from the softcode. (???)
+The same can be done from the softcode.
 
 
 
@@ -63,11 +200,11 @@ Preparing an input is like writing a tiny old BASIC program:
 
 - To create or overwrite a node, you simply type it.
 
-  - Either `<node> "value"`  is a constant value, like line 20,
+  - Either `<node> "value"`  is a constant blob value, like line 20,
 
   - Or `<node> <type> <content>` makes it a typed node + arguments, like line 10.
 
-- In the case of a constant, only 1 literal is given, enclosed in double quotes.
+- In the case of a constant blob, only 1 literal is given, enclosed in double quotes.
 
 - In the case of a typed node, arguments are given as a list of nodes 
 
@@ -83,7 +220,7 @@ You can clear the currently edited input using `CLEAR`.
 
 ## An automaton
 
-Unstructured Basiclog is an **automaton**: there is no difference between "source code" and "snapshot".
+Unstructured BASIClog is an **automaton**: there is no difference between "source code" and "snapshot".
 
 During execution, it maintains as a list of **numbered lines**:
 - A current **Knowledge Base**,
@@ -103,10 +240,11 @@ L_ source code snapshot = { node } ;
   L_ node = unique line number, payload ;
      L_ unique line number = line number ;
         (*unique per source code snapshot*)
-     L_ payload = type datum | literal | dataset ;
+     L_ payload = typed datum | literal | dataset | logical variable ;
        L_ typed datum = data type, { line number } ;
        L_ literal = '"', string, '"' ;
        L_ dataset = { line number } ;
+       L_ logical variable = '(', string, ')' ;
   L_ line number = natural integer ;
   L_ data type = string ;
 ```
@@ -121,10 +259,12 @@ L_ source code snapshot = { node } ;
 
 When a new piece of code needs to be inserted, the size (distance between the minimum and maximmum line number) of the new code is noted, and a place is found where the new **numbered lines** can be inserted one ofter anoter. It starts with an offset in the hundreds if size < 100, in the thousands if size < 1000, and so on.
 
-This specificity is what makes it so easy to communicate with Unstructured Basiclog. When such new code is inserted, if it's related to communication with the user, then each new set of nodes in the current source code snapshot are default-marked as being:
+This specificity is what makes it so easy to communicate with Unstructured BASIClog. When such new code is inserted, if it's related to communication with the user, then each new set of nodes in the current source code snapshot are default-marked as being:
 - A **PRINT message**,
 - An **INPUT prompt**, or
 - An **answer or command INPUT**.
+
+!!! needs to be rewritten
 
 
 
@@ -132,7 +272,7 @@ This specificity is what makes it so easy to communicate with Unstructured Basic
 
 **Everything** is stored in the same line number space: the Knowledge Base, the Pointer Graph, the Executing Behavior, the Documentation, and the User Input.
 
-These five elements are the **five types of content blocks** displayed to the user, queried from the user, used as source code, or manipulated in or by Unstructured Basiclog.
+These five elements are the **five types of content blocks** displayed to the user, queried from the user, used as source code, or manipulated in or by Unstructured BASIClog.
 
 - **A node** is a numbered line, with a type (a string) and arguments (line numbers).
 - **A list of nodes** is an environment.
@@ -211,17 +351,17 @@ Several things can happen, events like:
 - A `WAIT` goal actually succeeds now,
 - ...etc.
 
-In those cases, entire series of nodes may be created and deleted, as part of the state update process. Typically, these nodes are handled by builtin **meta-nodes**.
+In those cases, entire series of nodes may be created and deleted, as part of the state update process. Typically, these nodes are handled by builtin **metanodes**.
 
 For any type of event, 1 occurrence of the event corresponds to only 1 series of modifications, seen as management of instances update.
 
 
 
-## Spawing stuff
+## Spawning stuff
 
-When a `<node>` spawns, an `IS INSTANCE OF` meta-node is also spawned to link the `<occurrence>` of an event to its `<event>` type.
+When a `<node>` spawns, an `IS INSTANCE OF` metanode is also spawned to link the `<occurrence>` of an event to its `<event>` type.
 
-When a `<node>` is wasted, the `IS INSTANCE OF` meta-node, that was linking the `<occurrence>` of an event to its `<event>` type, is also wasted.
+When a `<node>` is wasted, the `IS INSTANCE OF` metanode, that was linking the `<occurrence>` of an event to its `<event>` type, is also wasted.
 
 
 
@@ -258,6 +398,14 @@ states
 <metanode>  IS A USER INPUT <node> !!!!!!!!!!!!!
 <metanode>  REM <node>
 
+source code
+<metanode>  NODE SOURCE <node> <content> ...
+<metanode>  NODE ID <literal>
+<metanode>  NODE TYPE <literal>
+<metanode>  NODE PAYLOAD <reference> ...
+<metanode>  LITERAL <literal>
+<metanode>  REFERENCE <literal> ...
+
 behavior tree
 <action>    SEQUENCE <outcome> ...
 <action>    FALLBACK <outcome> ...
@@ -267,8 +415,6 @@ behavior tree
 <action>    UNTIL <outcome>
 <action>    EVERY <msec> <outcome>
 <action>    AFTER <msec> <outcome>
-<outcome>   TEST <goal>
-<outcome>   WAIT <goal>
 <outcome>   HAS SUCCEEDED <outcome>
 <outcome>   HAS FAILED <outcome>
 <outcome>   IS RUNNING <outcome>
@@ -293,27 +439,25 @@ directed graph
 deduction production
 <rule>      IMPLIES <goal> <deduction>
 <rule>      TRIGGERS <goal> <action>
+<rule>      CONSIDERING WAIT <goal> <outcome>
+<rule>      CONSIDERING RUN <goal> <action>
+<rule>      CONSIDERING DEDUCE <goal> <deduction>
+
 ```
 
 
 
 ## Vocabulary description
 
-Below, a minimal explanation of the builtin vocabulary above.
-
-```xml
-<action>    RUN <start> <argyments> ...
-```
-
-Launch the execution of a `<start>` node with provuded arguments.
+Launch the execution of a `<start>` node with provided arguments.
 
 ```xml
 <metanode>  KNOWLEDGE BASE
 ```
 
-A meta-node meaning, "the current state of the Knowledge Base", everything including what's not related to the current state of the Pointer Graph, or to the currently Executing Behavior, or to the Documentation: any kind of knowledge e.g. facts, rules, thoughts, prompts, messages, ...etc.
+A metanode meaning, "the current state of the Knowledge Base", everything including what's not related to the current state of the Pointer Graph, or to the currently Executing Behavior, or to the Documentation: any kind of knowledge e.g. facts, rules, thoughts, prompts, messages, ...etc.
 
-One of the five meta-nodes that make Unstructured Basiclog an automaton, along with any combination of those four.
+One of the five metanodes that make Unstructured BASIClog an automaton, along with any combination of those five.
 
 - It always succeeds.
 
@@ -321,17 +465,17 @@ One of the five meta-nodes that make Unstructured Basiclog an automaton, along w
 <metanode>  POINTER GRAPH
 ```
 
-A meta-node meaning, "the current state of the Pointer Graph", detailing which node is currently pointing to which other node.
+A metanode meaning, "the current state of the Pointer Graph", detailing which node is currently pointing to which other node.
 
-One of the five meta-nodes that make Unstructured Basiclog an automaton, along with any combination of those four.
+One of the five metanodes that make Unstructured BASIClog an automaton, along with any combination of those five.
 
 ```xml
 <metanode>  EXECUTING BEHAVIOR
 ```
 
-A meta-node meaning, "the currently Executing Behavior", a snapshot of the contextual structure of the current behavior.
+A metanode meaning, "the currently Executing Behavior", a snapshot of the contextual structure of the current behavior.
 
-One of the five meta-nodes that make Unstructured Basiclog an automaton, along with any combination of those four.
+One of the five metanodes that make Unstructured BASIClog an automaton, along with any combination of those five.
 
 - It always succeeds.
 
@@ -339,9 +483,9 @@ One of the five meta-nodes that make Unstructured Basiclog an automaton, along w
 <metanode>  DOCUMENTATION
 ```
 
-A meta-node meaning, "this is part of the Documentation", the current comments about the source code snapshot state (or a part of a state).
+A metanode meaning, "this is part of the Documentation", the current comments about the source code snapshot state (or a part of a state).
 
-One of the five meta-nodes that make Unstructured Basiclog an automaton, along with any combination of those four.
+One of the five metanodes that make Unstructured BASIClog an automaton, along with any combination of those five.
 
 - It always succeeds.
 
@@ -349,9 +493,9 @@ One of the five meta-nodes that make Unstructured Basiclog an automaton, along w
 <metanode>  USER INPUT
 ```
 
-A meta-node meaning, "this is from User Input", the current user commands and prompt replies in the source code snapshot state (or a part of a state).
+A metanode meaning, "this is from User Input", the current user commands and prompt replies in the source code snapshot state (or a part of a state).
 
-One of the five meta-nodes that make Unstructured Basiclog an automaton, along with any combination of those four.
+One of the five metanodes that make Unstructured BASIClog an automaton, along with any combination of those five.
 
 - It always succeeds.
 
@@ -359,7 +503,7 @@ One of the five meta-nodes that make Unstructured Basiclog an automaton, along w
 <metanode>  NOTHING
 ```
 
-A Logical Tree `NOTHING` meta-node. It means, "the empty list". It's the opposite of `KNOWLEDGE BASE`.
+A Logical Tree `NOTHING` metanode. It means, "the empty list". It's the opposite of `KNOWLEDGE BASE`.
 
 - It always succeeds.
 
@@ -367,16 +511,16 @@ A Logical Tree `NOTHING` meta-node. It means, "the empty list". It's the opposit
 <metanode>  IDLE
 ```
 
-A Behavior Tree `IDLE` meta-node. It queries Unstructured Basiclog's current activity.
-- It succeeds if Unstructured Basiclog has no Behavior Tree node currently running.
-- It fails if Unstructured Basiclog has at least one Behavior Tree node currently running.
+A Behavior Tree `IDLE` metanode. It queries Unstructured BASIClog's current activity.
+- It succeeds if Unstructured BASIClog has no Behavior Tree node currently running.
+- It fails if Unstructured BASIClog has at least one Behavior Tree node currently running.
 - It is never still running.
 
 ```xml
 <metanode>  <= <pointer> ...
 ```
 
-A Logical Tree `<=` meta-node. It means, "the list of pointers that are POINTING TO here".
+A Logical Tree `<=` metanode. It means, "the list of pointers that are POINTING TO here".
 
 - It succeeds if the node which this node represents is pointed to by all the nodes which the `<pointer>` nodes represent.
 - It fails if the node which this node represents is not pointed to by all the nodes which the `<pointer>` nodes represent.
@@ -386,7 +530,7 @@ A Logical Tree `<=` meta-node. It means, "the list of pointers that are POINTING
 <metanode>  => <target> ...
 ```
 
-A Logical Tree `=>` meta-node. It means, "the list of pointers that here is POINTING to".
+A Logical Tree `=>` metanode. It means, "the list of pointers that here is POINTING to".
 
 - It succeeds if the node which this node represents is pointing to all the nodes which the `<target>` nodes represent.
 - It fails if the node which this node represents is not pointing to all the nodes which the `<target>` nodes represent.
@@ -416,7 +560,7 @@ A Behavior Tree `ENDED` logic node. It means that the `<enactor>` node caused th
 <metanode>  IS INSTANCE OF <occurrence> <event>
 ```
 
-A Behavior Tree `IS INSTANCE OF` logic node. It means that `<occurrence>` was spawned as a meta-representation of the `<event>` that occurred.
+A Behavior Tree `IS INSTANCE OF` logic node. It means that `<occurrence>` was spawned as a metarepresentation of the `<event>` that occurred.
 
 - It succeeds if `<occurrence>` represents actually an occurrence of the `<event>` that occurred.
 - It fails otherwise.
@@ -426,7 +570,7 @@ A Behavior Tree `IS INSTANCE OF` logic node. It means that `<occurrence>` was sp
 <metanode>  IS AN INSTANCE <node>
 ```
 
-A Behavior Tree `IS INSTANCE` logic node. It means that `<node>` was spawned as a meta-representation of an event that occurred.
+A Behavior Tree `IS INSTANCE` logic node. It means that `<node>` was spawned as a metarepresentation of an event that occurred.
 
 - It succeeds if `<node>` represents actually an occurrence of some event that occurred.
 - It fails otherwise.
@@ -436,7 +580,7 @@ A Behavior Tree `IS INSTANCE` logic node. It means that `<node>` was spawned as 
 <metanode>  REM <node>
 ```
 
-A no-operation `REM` meta-node. It means that `<node>` has no effect, and is part of the Documentation.
+A no-operation `REM` metanode. It means that `<node>` has no effect, and is part of the Documentation.
 
 - It always succeeds.
 
@@ -504,8 +648,8 @@ A Behavior Tree `UNTIL` control flow node. It executes its child until the child
 
 A Behavior Tree `EVERY` control flow node. It attempts to execute its child every `<msec>` milliseconds.
 
-- It succeeds if Unstructured Basiclog was not busy and could execute the last attempt.
-- It fals if Unstructured Basiclog could not execute the last attempt because it was busy.
+- It succeeds if Unstructured BASIClog was not busy and could execute the last attempt.
+- It fals if Unstructured BASIClog could not execute the last attempt because it was busy.
 - It is always still running.
 
 ```xml
@@ -514,29 +658,9 @@ A Behavior Tree `EVERY` control flow node. It attempts to execute its child ever
 
 A Behavior Tree `AFTER` control flow node. It attempts to execute its child after `<msec>` milliseconds.
 
-- It succeeds if Unstructured Basiclog was not busy and could execute that attempt..
-- It fals if Unstructured Basiclog could not execute that attempt because it was busy.
+- It succeeds if Unstructured BASIClog was not busy and could execute that attempt..
+- It fals if Unstructured BASIClog could not execute that attempt because it was busy.
 - It is still running before `<msec>` milliseconds.
-
-```xml
-<outcome>   TEST <goal>
-```
-
-A Behavior Tree `TEST` control flow node. It queries whether or not a `goal` is true.
-
-- It succeeds if the `goal` can be found or proven.
-- It fails if the `goal` cannot be found or proven.
-- It is still running if the `goal` is not known yet.
-
-```xml
-<outcome>   WAIT <goal>
-```
-
-A Behavior Tree `WAIT` control flow node. It waits for a `goal` to be true.
-
-- It succeeds if the `goal` can be found or proven.
-- It never fails.
-- It is still running if the `goal` cannot be found or proven.
 
 ```xml
 <outcome>   HAS SUCCEEDED <outcome>
@@ -734,6 +858,60 @@ The question is not whether it is currently triggering something, but whether or
 - It succeeds if `<goal>` can/does trigger `<action>`.
 - It fails if `<goal>` can/does not trigger `<action>`.
 - It is still running if the information is unavailable.
+
+```xml
+<outcome>   CONSIDERING RUN <goal> <action>
+```
+
+A Behavior Tree `CONSIDERING RUN` control flow node. In the context of a `goal,` it tries and queries the success of an `action`.
+
+- It succeeds if the `action` can be found or proven and executed successfully.
+- It fails if the `action` cannot be found or proven and executed successfully.
+- It is still running if the outcome is not known yet.
+
+```xml
+<outcome>   CONSIDERING WAIT <goal> <outcome>
+```
+
+A Behavior Tree `CONSIDERING WAIT` control flow node. In the context of a `goal,` it waits for an `outcome` to be true.
+
+- It succeeds if the `outcome` can be found or proven and executed successfully.
+- It never fails.
+- It is still running if the `outcome` cannot be found or proven and executed successfully.
+
+```xml
+<outcome>   CONSIDERING DEDUCE <goal> <premise> <deduction>
+```
+
+A Behavior Tree `CONSIDERING WAIT` control flow node. In the context of a `goal,` it links every `deduction` to its `premise`.
+
+- It succeeds if a non-empty `deduction` can be found or proven and executed successfully from the `premise`.
+- It fails if a only the empty `deduction` can be found or proven and executed successfully from the `premise`.
+- It is still running if the `outcome` cannot be found or proven and executed successfully.
+
+
+
+## Explicit node type declaration
+
+```JSON
+
+10 ="MY NEW FUN <arg1> <arg2>" 20 30
+20 = (arg1)
+30 = (arg2)
+
+```
+
+
+
+## Node math
+
+For every node, we know:
+
+- Which node comes next in lane,
+- Which node comes previous,
+- Which nodes it has as arguments,
+- Which nodes have it as argument,
+- Which nodes defines this node type in the documentation.
 
 
 
