@@ -28,32 +28,60 @@ _The Boomer_
 ## Syntax
 
 ```xml
+                <!--  -->
 
-<logic>         FOR <proposition>
-<logic>         ASSERT <proposition>
-<logic>         RETRACT <pattern>
-<logic>         PRODUCTION <situation> <action>
-<logic>         DEDUCTION <premise> <deduction>
+<linenumber>    HERE
+<linenumber>    LINE <number>
+<linenumber>    CURRENT ASSERTION LINE IS <linenumber>
+<linenumber>    CURRENT LINE STEP IS <number>
+<linenumber>    FROM <linenumber> TO <linenumber> ARE <number> STEPS
+<linenumber>    NEXT FREE LINE AFTER <linenumber> IS <linenumber>
 
-<behavior>      WAIT <situation>
+<selection>     EACH LINE FROM <linenumber> TO <linenumber>
+<selection>     EACH LINE LIKE <goal>
+
+<behavior>      LOCATE <linenumber>
+<behavior>      STEP <distance>
+<behavior>      ASSERT <proposition>
+<behavior>      RETRACT <goal>
+
+<behavior>      WAIT FOR <goal>
+
 <behavior>      SEQUENCE <behavior> ...
 <behavior>      FALLBACK <behavior> ...
 <behavior>      PARALLEL <behavior> ...
+<behavior>      FAIL ALL <behavior> ...
+<behavior>      FAIL ANY <behavior> ...
+
 <behavior>      WHILE <behavior>
 <behavior>      UNTIL <behavior>
-<behavior>      EVERY <time> <behavior>
-<behavior>      AFTER <time> <behavior>
 
-<event>         EVENT LOG <situation>
-<event>         PREVIOUS NEXT <event> <event>
-<event>         BEFORE AFTER <event> <event>
-<event>         WHEN EVENT OCCURRED <time> <event> <occurrence>
-<event>         TIME BETWEEN <time> <occurrence> <occurrence>
+<behavior>      FOR <selection> <behavior>
 
+<rule>          EVERY <time> DO <behavior>
+<rule>          AFTER <time> DO <behavior>
+<rule>          WHEN <goal> DO <behavior>
+<rule>          IF <goal> THEN <proposition>
 
 ```
 
+## Examples
 
+```JSON
+
+01 (a parent)
+02 (a child)
+03 (another child)
+
+10 IF 20 THEN 50
+20 SEQUENCE 30 40
+30 A PARENT OF 02 IS 01
+40 A PARENT OF 03 IS 01
+50 FALLBACK 60 70
+60 ARE SIBLINGS 02 03
+70 ARE EQUAL 02 03
+
+```
 
 ## Roadmap
 
