@@ -67,7 +67,7 @@ _The Boomer_
 
 ## Examples
 
-```JSON
+```
 
 01 (a parent)
 02 (a child)
