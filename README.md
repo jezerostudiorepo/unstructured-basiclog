@@ -77,7 +77,7 @@ behavior
    / "WHILE" behavior
    / "UNTIL" behavior
    / "FOR" selection behavior
-   / "THINK" proposition
+   / "THINK" goal
 
 rule
   <- "EVERY" time "DO" behavior
@@ -86,17 +86,15 @@ rule
    / "IF" goal "THEN" proposition
 
 grammar
-  <- rule_defined_+
+  <- "IS" linenumber "THE RESULT OF PARSING" linenumber "AS" parsing_expression
 
 parsing_expression
   <- linenumber
-   / ordered_choice
    / next_choice
+   / ordered_choice
    / add_suffix
    / terminal
-
-rule_defined
-  <- "IS" linenumber "PATTERN" parsing_expression
+   / same_predicate_as
 
 next_choice
   <- "IS" parsing_expression "FOLLOWED BY PATTERN" parsing_expression
@@ -111,6 +109,9 @@ add_suffix
 
 terminal
   <- "IS" parsing_expression "TERMINAL" linenumber
+
+same_predicate_as
+  <- "IS" parsing_expression "IDENTICAL TO" linenumber
 
 proposition
   <- proposition_part_+
