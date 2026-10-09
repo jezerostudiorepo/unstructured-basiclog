@@ -25,45 +25,114 @@ _The Boomer_
 
 
 
-## Syntax
+## Semantics
 
-```xml
-                <!--  -->
+```peg
+source_code_snapshot
+= numbered_line_*
 
-<linenumber>    HERE
-<linenumber>    LINE <number>
-<linenumber>    CURRENT ASSERTION LINE IS <linenumber>
-<linenumber>    CURRENT LINE STEP IS <number>
-<linenumber>    FROM <linenumber> TO <linenumber> ARE <number> STEPS
-<linenumber>    NEXT FREE LINE AFTER <linenumber> IS <linenumber>
+numbered_line
+= number_payload
 
-<selection>     EACH LINE FROM <linenumber> TO <linenumber>
-<selection>     EACH LINE LIKE <goal>
+payload
+= constant_blob
+/ variable
+/ typed_node
 
-<behavior>      LOCATE <linenumber>
-<behavior>      STEP <distance>
-<behavior>      ASSERT <proposition>
-<behavior>      RETRACT <goal>
+constant_blob
+= double_quote base_64_string double_guote
 
-<behavior>      WAIT FOR <goal>
+variable
+= opening_parenthesis glyph_string comment closing_parenthesis
 
-<behavior>      SEQUENCE <behavior> ...
-<behavior>      FALLBACK <behavior> ...
-<behavior>      PARALLEL <behavior> ...
-<behavior>      FAIL ALL <behavior> ...
-<behavior>      FAIL ANY <behavior> ...
+typed_node
+= selection
+/ behavior
+/ rule
 
-<behavior>      WHILE <behavior>
-<behavior>      UNTIL <behavior>
+selection
+= "THOSE FROM" linenumber "TO" linenumber
+/ "THOSE LIKE" goal
+/ "THOSE UNLIKE" goal
+/ "THE ENTIRE SNAPSHOT"
+/ "THE EMPTY SELECTION"
+/ "THE INVERSE OF" selection
+/ "UNION OF" selection_+
+/ "INTERSECTION OF" selection_+
+/ "DIFFERENCE OF" selection selection
 
-<behavior>      FOR <selection> <behavior>
+behavior
+= "STEP" distance
+/ "LOCATE" size
+/ "ASSERT" proposition
+/ "PARSE" proposition "AS" grammar
+/ "RETRACT" goal
+/ "WAIT FOR" goal
+/ "SEQUENCE" behavior_+
+/ "FALLBACK" behavior_+
+/ "PARALLEL" behavior_+
+/ "FAIL ALL" behavior_+
+/ "FAIL ANY" behavior_+
+/ "WHILE" behavior
+/ "UNTIL" behavior
+/ "FOR" selection behavior
+/ "THINK" proposition
 
-<rule>          EVERY <time> DO <behavior>
-<rule>          AFTER <time> DO <behavior>
-<rule>          WHEN <goal> DO <behavior>
-<rule>          IF <goal> THEN <proposition>
+rule
+= "EVERY" time "DO" behavior
+/ "AFTER" time "DO" behavior
+/ "WHEN" goal "DO" behavior
+/ "IF" goal "THEN" proposition
+
+grammar
+= rule_definition_+
+
+grammar_token
+= rule_definition
+/ ordered_choice
+/ add suffix
+/ terminal
+
+rule_definition
+= "IS" linenumber "PATTERN" linenumber
+
+ordered_choice
+= "IS" linenumber "OR PATTERN" linenumber
+
+add_suffix
+= "IS" linenumber "ONE OR MORE" linenumber
+/ "IS" linenumber "ZERO OR MORE" linenumber
+/ "IS" linenumber "ZERO OR ONE" linenumber
+
+terminal
+= "IS" linenumber "TERMINAL" linenumber
+
+proposition
+= predicate_part_+
+
+predicate_part
+= double_quote [A-Z ]_+ double_quote linenumber_+
+
+goal
+= proposition {
+  // Take all variables and keep an eye on them
+}
+
+linenumber
+= number
+
+distance
+= number
+
+time
+= number
+
+number
+= [0-9]+
 
 ```
+
+
 
 ## Examples
 
@@ -82,6 +151,8 @@ _The Boomer_
 70 ARE EQUAL 02 03
 
 ```
+
+
 
 ## Roadmap
 
@@ -118,6 +189,7 @@ Things tending to stay the same, when a new agent joins the workspace, the worsp
 
 
 
+```
 
 
 
@@ -135,6 +207,10 @@ Things tending to stay the same, when a new agent joins the workspace, the worsp
 
 
 
+
+
+
+```
 
 # Unstructured BASIClog RECYCLE BIN
 
@@ -230,7 +306,7 @@ Preparing an input is like writing a tiny old BASIC program:
 
   - Either `<node> "value"`  is a constant blob value, like line 20,
 
-  - Or `<node> <type> <content>` makes it a typed node + arguments, like line 10.
+  - Or `<node> <type> <content>` makes it a typed node_+ arguments, like line 10.
 
 - In the case of a constant blob, only 1 literal is given, enclosed in double quotes.
 
