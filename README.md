@@ -90,11 +90,15 @@ grammar
 grammar_token
 = rule_definition
 / ordered_choice
+/ next_choice
 / add suffix
 / terminal
 
 rule_definition
 = "IS" linenumber "PATTERN" linenumber
+
+next_choice
+= "IS" linenumber "FOLLOWED BY PATTERN" linenumber
 
 ordered_choice
 = "IS" linenumber "OR PATTERN" linenumber
