@@ -29,29 +29,29 @@ _The Boomer_
 
 ```peg
 source_code_snapshot
-= numbered_line_*
+<- numbered_line_*
 
 numbered_line
-= number_payload
+<- number payload
 
 payload
-= constant_blob
+<- constant_blob
 / variable
 / typed_node
 
 constant_blob
-= double_quote base_64_string double_guote
+<- '"' base_64_string '"'
 
 variable
-= opening_parenthesis glyph_string comment closing_parenthesis
+<- "(" [a-z0-9 ]_+ ")"
 
 typed_node
-= selection
+<- selection
 / behavior
 / rule
 
 selection
-= "THOSE FROM" linenumber "TO" linenumber
+<- "THOSE FROM" linenumber "TO" linenumber
 / "THOSE LIKE" goal
 / "THOSE UNLIKE" goal
 / "THE ENTIRE SNAPSHOT"
@@ -62,7 +62,7 @@ selection
 / "DIFFERENCE OF" selection selection
 
 behavior
-= "STEP" distance
+<- "STEP" distance
 / "LOCATE" size
 / "ASSERT" proposition
 / "PARSE" proposition "AS" grammar
@@ -79,60 +79,60 @@ behavior
 / "THINK" proposition
 
 rule
-= "EVERY" time "DO" behavior
+<- "EVERY" time "DO" behavior
 / "AFTER" time "DO" behavior
 / "WHEN" goal "DO" behavior
 / "IF" goal "THEN" proposition
 
 grammar
-= rule_definition_+
+<- rule_defined_+
 
 grammar_token
-= rule_definition
+<- rule_defined
 / ordered_choice
 / next_choice
 / add suffix
 / terminal
 
-rule_definition
-= "IS" linenumber "PATTERN" linenumber
+rule_defined
+<- "IS" linenumber "PATTERN" grammar_token
 
 next_choice
-= "IS" linenumber "FOLLOWED BY PATTERN" linenumber
+<- "IS" grammar_token "FOLLOWED BY PATTERN" grammar_token
 
 ordered_choice
-= "IS" linenumber "OR PATTERN" linenumber
+<- "IS" grammar_token "OR PATTERN" grammar_token
 
 add_suffix
-= "IS" linenumber "ONE OR MORE" linenumber
-/ "IS" linenumber "ZERO OR MORE" linenumber
-/ "IS" linenumber "ZERO OR ONE" linenumber
+<- "IS" grammar_token "ONE OR MORE" grammar_token
+/ "IS" grammar_token "ZERO OR MORE" grammar_token
+/ "IS" grammar_token "ZERO OR ONE" grammar_token
 
 terminal
-= "IS" linenumber "TERMINAL" linenumber
+<- "IS" grammar_token "TERMINAL" linenumber
 
 proposition
-= predicate_part_+
+<- predicate_part_+
 
 predicate_part
-= double_quote [A-Z ]_+ double_quote linenumber_+
+<- double_quote [A-Z ]_+ double_quote linenumber_+
 
 goal
-= proposition {
+<- proposition {
   // Take all variables and keep an eye on them
 }
 
 linenumber
-= number
+<- number
 
 distance
-= number
+<- number
 
 time
-= number
+<- number
 
 number
-= [0-9]+
+<- [0-9]+
 
 ```
 
