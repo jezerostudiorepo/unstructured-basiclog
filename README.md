@@ -3,7 +3,7 @@
 
 # Unstructured BASIClog DESIGN
 
-> "A smiling finger to academia papers."
+> "A smiling finger to academic papers."
 
 _Rock Paper Scissor_
 
@@ -19,7 +19,7 @@ _The Boomer_
 
 **Unstructured BASIClog** is the only revolutionary REPL automaton that can save the world, one day. Make your share, do your duty, join us now!
 
-**As a REPL automaton,** Unstructured BASIClog offers state-of-the-art ergonomics that feels just like operating an authentic modern home computer: Amstrad CPC 464, ZX Spectrum, Commodore 64, Thomson MO5...
+**As a REPL automaton,** Unstructured BASIClog offers state-of-the-art ergonomics that feel just like operating an authentic modern home computer: Amstrad CPC 464, ZX Spectrum, Commodore 64, Thomson MO5...
 
 **And that's** about it. But as a production/deduction rule system, with timers and triggers, a behavior tree, and a logic knowledge base, all operated through a pure line-numbered assembly language REPL, offline.
 
@@ -29,110 +29,120 @@ _The Boomer_
 
 ```peg
 source_code_snapshot
-<- numbered_line_*
+  <- numbered_line_*
 
 numbered_line
-<- number payload
+  <- linenumber payload
 
 payload
-<- constant_blob
-/ variable
-/ typed_node
+  <- constant_blob
+   / variable
+   / typed_node
+   / goal
 
 constant_blob
-<- '"' base_64_string '"'
+  <- '"' base_64_string '"'
 
 variable
-<- "(" [a-z0-9 ]_+ ")"
+  <- "(" [a-z0-9 ]_+ ")"
 
 typed_node
-<- selection
-/ behavior
-/ rule
+  <- selection
+   / behavior
+   / rule
 
 selection
-<- "THOSE FROM" linenumber "TO" linenumber
-/ "THOSE LIKE" goal
-/ "THOSE UNLIKE" goal
-/ "THE ENTIRE SNAPSHOT"
-/ "THE EMPTY SELECTION"
-/ "THE INVERSE OF" selection
-/ "UNION OF" selection_+
-/ "INTERSECTION OF" selection_+
-/ "DIFFERENCE OF" selection selection
+  <- "THOSE FROM" linenumber "TO" linenumber
+   / "THOSE LIKE" goal
+   / "THOSE UNLIKE" goal
+   / "THE ENTIRE SNAPSHOT"
+   / "THE EMPTY SELECTION"
+   / "THE INVERSE OF" selection
+   / "UNION OF" selection_+
+   / "INTERSECTION OF" selection_+
+   / "DIFFERENCE OF" selection selection
 
 behavior
-<- "STEP" distance
-/ "LOCATE" size
-/ "ASSERT" proposition
-/ "PARSE" proposition "AS" grammar
-/ "RETRACT" goal
-/ "WAIT FOR" goal
-/ "SEQUENCE" behavior_+
-/ "FALLBACK" behavior_+
-/ "PARALLEL" behavior_+
-/ "FAIL ALL" behavior_+
-/ "FAIL ANY" behavior_+
-/ "WHILE" behavior
-/ "UNTIL" behavior
-/ "FOR" selection behavior
-/ "THINK" proposition
+  <- "STEP" distance
+   / "LOCATE" size
+   / "ASSERT" proposition
+   / "PARSE" proposition "AS" grammar
+   / "RETRACT" goal
+   / "WAIT FOR" goal
+   / "SEQUENCE" behavior_+
+   / "FALLBACK" behavior_+
+   / "PARALLEL" behavior_+
+   / "FAIL ALL" behavior_+
+   / "FAIL ANY" behavior_+
+   / "WHILE" behavior
+   / "UNTIL" behavior
+   / "FOR" selection behavior
+   / "THINK" proposition
 
 rule
-<- "EVERY" time "DO" behavior
-/ "AFTER" time "DO" behavior
-/ "WHEN" goal "DO" behavior
-/ "IF" goal "THEN" proposition
+  <- "EVERY" time "DO" behavior
+   / "AFTER" time "DO" behavior
+   / "WHEN" goal "DO" behavior
+   / "IF" goal "THEN" proposition
 
 grammar
-<- rule_defined_+
+  <- rule_defined_+
 
-grammar_token
-<- rule_defined
-/ ordered_choice
-/ next_choice
-/ add suffix
-/ terminal
+parsing_expression
+  <- linenumber
+   / ordered_choice
+   / next_choice
+   / add_suffix
+   / terminal
 
 rule_defined
-<- "IS" linenumber "PATTERN" grammar_token
+  <- "IS" linenumber "PATTERN" parsing_expression
 
 next_choice
-<- "IS" grammar_token "FOLLOWED BY PATTERN" grammar_token
+  <- "IS" parsing_expression "FOLLOWED BY PATTERN" parsing_expression
 
 ordered_choice
-<- "IS" grammar_token "OR PATTERN" grammar_token
+  <- "IS" parsing_expression "OR PATTERN" parsing_expression
 
 add_suffix
-<- "IS" grammar_token "ONE OR MORE" grammar_token
-/ "IS" grammar_token "ZERO OR MORE" grammar_token
-/ "IS" grammar_token "ZERO OR ONE" grammar_token
+  <- "IS" parsing_expression "ONE OR MORE" parsing_expression
+   / "IS" parsing_expression "ZERO OR MORE" parsing_expression
+   / "IS" parsing_expression "ZERO OR ONE" parsing_expression
 
 terminal
-<- "IS" grammar_token "TERMINAL" linenumber
+  <- "IS" parsing_expression "TERMINAL" linenumber
 
 proposition
-<- predicate_part_+
+  <- proposition_part_+
+
+proposition_part
+  <- predicate_part linenumber_+
 
 predicate_part
-<- double_quote [A-Z ]_+ double_quote linenumber_+
+  <- [A-Z ]_+
 
 goal
-<- proposition {
+  <- proposition {
   // Take all variables and keep an eye on them
 }
 
 linenumber
-<- number
+  <- number
+
+size
+  <- number
 
 distance
-<- number
+  <- number
 
 time
-<- number
+  <- number
 
 number
-<- [0-9]+
+  <- [0-9]_+
+
+base_64_string
+  <- [a-zA-Z0-9+/]_+
 
 ```
 
@@ -165,7 +175,7 @@ number
 - `[ ]` Implement generic buttons in the toolbar.
 - `[ ]` Implement generic input API.
 - `[ ]` Detach Workspace from Unstructured BASIClog.
-- `[ ]` Make it a system where the source code and the interface is one and same thing.
+- `[ ]` Make it a system where the source code and the interface are one and same thing.
 - `[ ]` When you look at a page of code, you're actually looking at an interactable UI you can use to launch services or shut them down, make queries, etc.
 - `[ ]` Add crypto functionality to blobs. Important because it allows authorization math.
 
@@ -173,23 +183,21 @@ number
 
 ## Agents
 
-There's only one agent in Unstructured BASIClog: Unstructured BASIClog itself. We only speak of agents to conceive, design and create its communication mechanisms.
-
-Because we thing it should behave consistently with its environment in a seamless input/output flow.
+There's only one agent in Unstructured BASIClog: Unstructured BASIClog itself. We only speak of agents to conceive, design and create its communication mechanisms. Because we think it should behave consistently with its environment in a seamless input/output flow.
 
 
 
 ## Workspaces
 
-Workspaces are an equivalent of logical variables but for parts of the source code snapshot of agents, that is shared across agents.
+Workspaces are an equivalent of logical variables but for parts of agents' source code snapshots shared across agents.
 
-In other words, it's a selection of lines that an agent can choose to share or not. The selected lines are maintained identical in those that share them.
+In other words, it's a selection of lines that an agent can choose to share or not. The selected lines are maintained identical across those that share them.
 
-The selection can be expressed using set operators, line number ranges, and queries in a same context.
+The selection can be expressed using set operators, line number ranges, and queries within a same context.
 
 Basically, it's a window an agent opens for communication.
 
-Things tending to stay the same, when a new agent joins the workspace, the worspace currently shared lines overwrite its own.
+Things tending to stay the same, when a new agent joins the workspace, the lines currently shared in the worspace overwrite its own.
 
 
 
